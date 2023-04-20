@@ -24,7 +24,8 @@ from keras.layers import Conv2D
 from keras.layers import MaxPooling2D
 from keras.layers import Flatten
 from keras.layers import Dense
-from keras.preprocessing.image import ImageDataGenerator, load_img
+from keras.preprocessing.image import ImageDataGenerator
+from keras.utils import load_img
 import tensorflow._api.v2.compat.v1 as tf 
 tf.disable_v2_behavior()
 import pandas as pd
@@ -166,13 +167,18 @@ class LCD_CNN:
         self.b4["state"] = "normal"
         self.b4.config(cursor="hand2")
 
+        
+
     def test_data(self):
+
+
         f_types = [('Jpg Files', '*.jpg')]
         filename = filedialog.askopenfilename(filetypes=f_types)
         img = ImageTk.PhotoImage(file=filename)
 
 
-        from keras.preprocessing import image
+        #from keras.preprocessing import image
+        import keras.utils as image
         import matplotlib.image as mpimg
         
         img = mpimg.imread(filename)
